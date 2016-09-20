@@ -1,26 +1,99 @@
 {% load staticfiles %}
-<html>
-    <head>
-        <title>pancoor blog</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href='//fonts.googleapis.com/css?family=Quicksand&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    </head>
-    <body>
-        <div class="page-header">
-            {% if user.is_authenticated %}
-            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-            {% endif %}
-        <h1><a href="/">pancoor blog</a></h1>
-    </div>
-    <div class="content container">
-        <div class="row">
-            <div class="col-md-8">
-            {% block content %}
-            {% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <title>pancoor blog</title>
+
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+      <link href='//fonts.googleapis.com/css?family=Quicksand&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+      <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  </head>
+
+  <body>
+
+  <div class="container">
+      <div class="row">
+
+          <!-- Content -->
+          <div class="col-md-8">
+              <div class="content">
+                  {% block content %}
+                  {% endblock %}
+              </div>
+          </div>
+
+          <!-- Navigation - Menu -->
+          <div class="col-md-2">
+              <div class="menu">
+                  <div class="menu-header">
+                      {% if user.is_authenticated %}
+                      <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                      {% endif %}
+                      <h1><a href="/">pancoor blog</a></h1>
+                  </div>
+                  <nav>
+                  <div id="MainMenu" class="menu-list">
+                      <ul>
+                          <li><a href="/" data-parent="#MainMenu">home</a></li>
+                          <div class="tagsDrop">
+                              <li><a href="#tags" class="tagsDrop" data-toggle="collapse" data-parent="#MainMenu" style="text-decoration:none" >tags</a></li>
+                              <div class="collapse tagsDropContent" id="tags">
+                                  <ul>
+                                      <li><a href="/">python</a></li>
+                                      <li><a href="/">django</a></li>
+                                      <li><a href="/">norsk</a></li>
+                                      <li><a href="/">photos</a></li>
+                                      <li><a href="/">unsorted</a></li>
+                                  </ul>
+                              </div>
+                          </div>
+
+                          <div class="archiveDrop">
+                              <li><a href="#archive" data-toggle="collapse" data-parent="#MainMenu" style="text-decoration:none">archive</a></li>
+                              <div class="collapse archiveDropContent" id="archive">
+                                  <ul>
+                                      <li><a href="/">2016</a></li>
+                                      <li><a href="/">2015</a></li>
+                                      <li><a href="/">2014</a></li>
+                                  </ul>
+                              </div>
+                          </div>
+                          <li><a href="/" data-parent="#MainMenu">about </a></li>
+                          <li><a href="/" data-parent="#MainMenu">contact</a></li>
+                      </ul>
+                  </div>
+                      </nav>
+
+                </div>
             </div>
-        </div>
-    </div>
-    </body>
+
+        </div><!-- /.row -->
+
+  </div><!-- /.container -->
+
+
+  <footer class="footer">
+
+          <p>Footer Text</p>
+
+  </footer>
+
+  </body>
+
 </html>
